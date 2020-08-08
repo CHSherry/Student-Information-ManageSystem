@@ -1,7 +1,6 @@
-#include<stdio.h>
+#include<stdio.h>   /*Student Information ManageSystem*/
 int main(void)
 {
-    inljljlk
 
 
     return 0;
