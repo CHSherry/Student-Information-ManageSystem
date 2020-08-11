@@ -72,7 +72,7 @@ void aver(void)  //平均值和最值
     printf("所有学生成绩的平均值为 %.1f \n最高分为 %d 分，共有 %d 人\n最低分为 %d 分，共有 %d 人\n", aver, max, maxnum, min, minnum);
 }
 
-void sort(void)  //排序    待定
+void sort(void)  //排序
 {
     puts("请选择排序方式:");
     puts("1.按姓名拼音排序");
@@ -84,7 +84,7 @@ void sort(void)  //排序    待定
     {
         if (choice < 1 || choice > 3)  //判定输入是否合法
         {
-            puts("请选择1-3之间的一个或输入q退出");
+            puts("请选择1-3之间的一个");
             continue;
         }
         switch (choice)
@@ -94,6 +94,75 @@ void sort(void)  //排序    待定
         case '3': numbersort(); break;
         }
         break;
+    }
+}
+
+void namesort(void)  //按姓名排序
+{
+    int i, j;
+    struct stu temp;
+    for (i = 0; i < size ; i++)
+    {
+        for (j = i; j < size-1; j++)
+        {
+            if (strcmp(studs[j].name, studs[j + 1].name) > 0)
+            {
+                temp = studs[j];
+                studs[j] = studs[j + 1];
+                studs[j + 1] = temp;
+            }
+        }
+    }
+    puts("序号      姓名      学号      班级      年级");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d     %s      %s      %s      %d\n", i + 1, studs[i].name, studs[i].number, studs[i].clas, studs[i].grade);
+    }
+}
+
+void gradesort(void)  //按成绩排序
+{
+    int i, j;
+    struct stu temp;
+    for (i = 0; i < size; i++)
+    {
+        for (j = i; j < size - 1; j++)
+        {
+            if (studs[j].grade < studs[j + 1].grade)
+            {
+                temp = studs[j];
+                studs[j] = studs[j + 1];
+                studs[j + 1] = temp;
+            }
+        }
+    }
+    puts("序号      姓名      学号      班级      年级");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d     %s      %s      %s      %d\n", i + 1, studs[i].name, studs[i].number, studs[i].clas, studs[i].grade);
+    }
+}
+
+void numbersort(void)  //按学号排序
+{
+    int i, j;
+    struct stu temp;
+    for (i = 0; i < size; i++)
+    {
+        for (j = i; j < size - 1; j++)
+        {
+            if (strcmp(studs[j].number, studs[j + 1].number) > 0)
+            {
+                temp = studs[j];
+                studs[j] = studs[j + 1];
+                studs[j + 1] = temp;
+            }
+        }
+    }
+    puts("序号      姓名      学号      班级      年级");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d     %s      %s      %s      %d\n", i + 1, studs[i].name, studs[i].number, studs[i].clas, studs[i].grade);
     }
 }
 
@@ -125,6 +194,7 @@ void nor(void)
         puts("符合正态分布要求");
     }
 }
+
 int main(void)
 {
 
