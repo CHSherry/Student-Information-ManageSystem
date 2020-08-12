@@ -1,5 +1,7 @@
-#include<stdio.h>   /*Student Information ManageSystem*/
+/*Student Information ManageSystem*/
+#include<stdio.h>   
 #include<string.h>
+#include<stdlib.h>
 
 struct stu  //主程序数组大小变量为size
 {
@@ -11,12 +13,32 @@ struct stu  //主程序数组大小变量为size
 } studs[500];
 int size;  //总人数 全局变量
 
-/*分析函数组*/
+void close(void)
+{
+    puts("************************************");
+    puts("             感谢使用！");
+    puts("************************************");
+    exit(0);
+}
 
+void about(void)  //后续若更新则记录更新时间和版本  可放图标
+{
+    puts("名称：学生成绩管理系统");
+    puts("版本：1.0");
+    puts("适用系统：Windows");
+    puts("更新时间：2020年8月");
+}
+
+void help(void)
+{
+    
+}
+
+/*分析函数组*/
 
 void aver(void)  //平均值和最值
 {
-    double aver = 0;
+    double aver=0;
     int max, min;
     int maxnum, minnum;  //最值人数
     maxnum = minnum = 1;
@@ -48,8 +70,6 @@ void aver(void)  //平均值和最值
     aver /= size;
     printf("所有学生成绩的平均值为 %.1f \n最高分为 %d 分，共有 %d 人\n最低分为 %d 分，共有 %d 人\n", aver, max, maxnum, min, minnum);
 }
-
-
 
 void namesort(void)  //按姓名排序
 {
@@ -155,8 +175,14 @@ void sort(void)  //排序
     puts("1.按姓名拼音排序");
     puts("2.按成绩从高到低排序");
     puts("3.按学号排序");
-    int choice;
+    char choice;
     choice = getchar();
+    while (getchar() != '\n')  //判断输入是否合法
+    {
+        puts("非法输入！  请输入1~3之间的一个");
+        while (getchar() != '\n');
+        choice = getchar();
+    }
     while (1)
     {
         if (choice < '1' || choice > '3')  //判定输入是否合法
@@ -183,6 +209,12 @@ void analy(void)
     puts("若要退出请输入q");  //返回
     char choice;
     choice = getchar();
+    while (getchar() != '\n')
+    {
+        puts("非法输入！  请输入1~3或q中的一个");
+        while (getchar() != '\n');
+        choice = getchar();
+    }
     while (choice != 'q')  //判定返回
     {
         if (choice < 1 || choice > 3)  //判定输入是否合法
@@ -202,7 +234,6 @@ void analy(void)
 
 int main(void)
 {
-
-
+    close();
     return 0;
 }
